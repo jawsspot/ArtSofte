@@ -1,11 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  Switch,
-  Route,
+  
   NavLink
 } from "react-router-dom";
-import {deleteComments} from '../redux/actions'
+import {deleteItems} from '../redux/actions'
 import {repeat} from '../redux/actions'
 import style from "./UlRemittance.scss"
 
@@ -30,8 +29,8 @@ class UlRemittance extends React.Component{
           <p className={style.amount}>{li.transferAmount}</p>
           <p className={style.date}>{li.date}</p>
           <div className={style.buttons}> 
-           <button className={style.btn} onClick={(e) => this.props.repeat(li)}><NavLink to="/AddRemittance" exact>Повторить перевод</NavLink></button>
-           <button className={style.btn} onClick={(e) => this.props.deleteComments(index)}>Удалить</button>
+           <button className={style.btn} onClick={(e) => this.props.repeat(li)}><NavLink to="/" exact>Повторить перевод</NavLink></button>
+           <button className={style.btn} onClick={(e) => this.props.deleteItems(index)}>Удалить</button>
           </div>
          
         </li>  
@@ -50,7 +49,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  deleteComments,
+  deleteItems,
   repeat
 };
 

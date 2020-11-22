@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {createComments} from "../redux/actions";
+import {createItems} from "../redux/actions";
 import Validate from './validate/Validate'
 import style from "./Add.scss"
 
@@ -50,7 +50,7 @@ class addComment extends React.Component {
     };
     
     localStorage.removeItem('repeat')
-    this.props.createComments(newPost);
+    this.props.createItems(newPost);
     this.setState({ senderNumber: "", validity: "", cvc:"", recipientNumber:"", transferAmount:"" });
   };
 
@@ -144,7 +144,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  createComments,
+  createItems,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(addComment);

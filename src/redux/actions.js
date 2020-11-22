@@ -1,6 +1,6 @@
-export const createComments = (post) => {
+export const createItems = (post) => {
   return {
-    type: "CREATE_COMMENTS",
+    type: "CREATE_HISTORY_ITEMS",
     senderNumber: post.senderNumber,
     validity: post.validity,
     cvc: post.cvc,
@@ -11,15 +11,15 @@ export const createComments = (post) => {
   };
 };
 
-export const deleteComments = (index) => {
+export const deleteItems = (index) => {
   return {
-    type: "DELETE_COMMENTS",
+    type: "DELETE_HISTORY_ITEMS",
     index: index,
   };
 };
 export const repeat = (li) => {
   return {
-    type: "REPEAT_COMMENTS",
+    type: "REPEAT_HISTORY_ITEMS",
     senderNumber: li.senderNumber,
     validity: li.validity,
     cvc: li.cvc,

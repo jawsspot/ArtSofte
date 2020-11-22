@@ -9,23 +9,23 @@ import App from "./app";
 
 
 
-let commentsLoadState;
+let loadState;
 
-if (localStorage.getItem("comments") === null) {
-  commentsLoadState = [];
+if (localStorage.getItem("historyItems") === null) {
+  loadState = [];
   // записываем в localStorage пустой массив
-  localStorage.setItem("comments", "[]");
+  localStorage.setItem("historyItems", "[]");
 } else {
-  let comments = localStorage.getItem("comments");
-  comments = JSON.parse(comments);
+  let historyItems = localStorage.getItem("historyItems");
+  historyItems = JSON.parse(historyItems);
   let arr = [];
-  commentsLoadState = comments.map((item) => {
+  loadState = historyItems.map((item) => {
     arr.push(item);
   });
-  commentsLoadState = arr;
+  loadState = arr;
 }
 
-let initialState = commentsLoadState;
+let initialState = loadState;
 
 const store = createStore(postsReducer, initialState);
 

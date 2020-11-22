@@ -1,9 +1,9 @@
 const postsReducer = (state = [], action) => {
   
   switch (action.type) {
-    case "CREATE_COMMENTS":
-      let commentsState = localStorage.getItem("comments");
-      commentsState = JSON.parse(commentsState);
+    case "CREATE_HISTORY_ITEMS":
+      let historyItems = localStorage.getItem("historyItems");
+      historyItems = JSON.parse(historyItems);
 
       const addCommentObj = {
         senderNumber: action.senderNumber,
@@ -15,9 +15,9 @@ const postsReducer = (state = [], action) => {
         id: action.id,
       };
 
-      commentsState.push(addCommentObj);
-      let toLocalStor = JSON.stringify(commentsState);
-      localStorage.setItem("comments", toLocalStor);
+      historyItems.push(addCommentObj);
+      let toLocalStor = JSON.stringify(historyItems);
+      localStorage.setItem("historyItems", toLocalStor);
 
       return [
         ...state,
@@ -33,20 +33,20 @@ const postsReducer = (state = [], action) => {
         },
       ];
 
-    case "DELETE_COMMENTS":
+    case "DELETE_HISTORY_ITEMS":
       console.log(action.index);
       let newState = state;
 
       newState.splice(--action.index, 1);
 
       let newLocalStor = JSON.stringify(newState);
-      localStorage.setItem("comments", newLocalStor);
+      localStorage.setItem("historyItems", newLocalStor);
 
       return [...newState];
 
-    case "REPEAT_COMMENTS":
+    case "REPEAT_HISTORY_ITEMS":
       console.log(action.recipientNumber);
-      localStorage.removeItem("repeat")
+      localStorage.removeItem("repeat");
       const repeatData = {
         nowSenderNumber: action.senderNumber,
         nowValidity: action.validity,
